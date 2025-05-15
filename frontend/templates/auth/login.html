@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <h1 class="auth-title">Войти в аккаунт</h1>
+
+    {% if error %}
+    <div class="error-message">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    <form class="auth-form" action="/auth/login" method="post">  <!-- Изменено здесь -->
+        <div class="form-group">
+            <label class="form-label" for="login">Имя пользователя</label>
+            <input
+                type="text"
+                id="login"
+                name="login"
+                class="form-input"
+                required
+                placeholder="Введите логин"
+            >
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="password">Пароль</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-input"
+                required
+                placeholder="••••••••"
+            >
+        </div>
+
+        <button type="submit" class="btn-primary">Войти</button>
+    </form>
+
+    <div class="auth-links">
+        Нет аккаунта?
+        <a href="/auth/register" class="auth-link">Зарегистрироваться</a>
+    </div>
+</div>
+{% endblock %}

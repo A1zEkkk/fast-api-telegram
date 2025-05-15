@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Задачи на {{ day }} {{ month }} {{ year }}{% endblock %}
+
+{% block content %}
+<div class="day-container">
+    <h2>Задачи на {{ day }} {{ month }} {{ year }}</h2>
+
+    {% if reminder %}
+        <ul>
+        {% for r in reminder %}
+            <li>{{ r.reminder }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Задач нет</p>
+    {% endif %}
+
+    <form method="get" action="/dashboard/{{ year }}/{{ month }}/{{ day }}/add_reminder">
+        <button type="submit">Добавить задачу</button>
+    </form>
+</div>
+{% endblock %}

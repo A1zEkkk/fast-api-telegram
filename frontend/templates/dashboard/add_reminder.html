@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавить задачу</title>
+</head>
+<body>
+    <h1>Добавить задачу на {{ day }} {{ month }} {{ year }}</h1>
+    <form method="post" action="/dashboard/{{ year }}/{{ month }}/{{ day }}/add_reminder">
+        <div id="reminder-fields">
+            <input type="text" name="reminder" placeholder="Задача 1" required>
+        </div>
+        <button type="button" onclick="addReminderField()">+ Добавить задачу</button>
+        <br><br>
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <script>
+        function addReminderField() {
+            const container = document.getElementById("reminder-fields");
+            const inputCount = container.getElementsByTagName("input").length + 1;
+            const input = document.createElement("input");
+            input.type = "text";
+            input.name = "reminder";
+            input.placeholder = "Задача " + inputCount;
+            container.appendChild(document.createElement("br"));
+            container.appendChild(input);
+        }
+    </script>
+</body>
+</html>

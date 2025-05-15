@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Задачи на {{ day }} {{ month }} {{ year }}{% endblock %}
+
+{% block content %}
+<h1>Задачи на {{ day }} {{ month }} {{ year }}</h1>
+
+<div class="reminders">
+    {% if reminders %}
+        <ul>
+            {% for reminder in reminders %}
+                <li>{{ reminder }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Задач нет.</p>
+    {% endif %}
+</div>
+
+<h2>Добавить новую задачу</h2>
+<form action="/dashboard/{{ year }}/{{ month }}/{{ day }}/add_reminder" method="POST">
+    <label for="reminder">Задача:</label>
+    <input type="text" id="reminder" name="reminder" required>
+    <button type="submit">Добавить</button>
+</form>
+{% endblock %}

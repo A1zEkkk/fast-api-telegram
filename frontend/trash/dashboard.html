@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Календарь{% endblock %}
+
+{% block content %}
+<div class="calendar-wrapper">
+    <div class="calendar-header">
+        <a class="nav-arrow" href="/dashboard/{{ prev_year }}/{{ prev_month }}">←</a>
+        <h2 class="calendar-title">{{ month }} {{ year }}</h2>
+        <a class="nav-arrow" href="/dashboard/{{ next_year }}/{{ next_month }}">→</a>
+    </div>
+
+    <table class="calendar-table">
+        <thead>
+            <tr>
+                <th>Пн</th>
+                <th>Вт</th>
+                <th>Ср</th>
+                <th>Чт</th>
+                <th>Пт</th>
+                <th>Сб</th>
+                <th>Вс</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for week in weeks %}
+            <tr>
+                {% for day in week %}
+                <td>{% if day != 0 %}{{ day }}{% else %}&nbsp;{% endif %}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
